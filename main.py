@@ -3,7 +3,7 @@ from pygame import Color
 from constants import *
 from player import Player
 from asteroid import Asteroid
-import asteroidfield
+from asteroidfield import AsteroidField
 
 
 def main():
@@ -20,12 +20,14 @@ def main():
 
     Player.containers = (updatable, drawable)
     Asteroid.containers = (asteroids, updatable, drawable)
+    AsteroidField.containers = (updatable)
 
     clock = pygame.time.Clock()
     dt = 0
     player_start_x = SCREEN_WIDTH / 2
     player_start_y = SCREEN_HEIGHT / 2
     player = Player(player_start_x, player_start_y)
+    asteroid_field = AsteroidField()
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
