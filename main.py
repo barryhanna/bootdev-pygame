@@ -2,6 +2,8 @@ import pygame
 from pygame import Color
 from constants import *
 from player import Player
+from asteroid import Asteroid
+import asteroidfield
 
 
 def main():
@@ -14,7 +16,11 @@ def main():
     pygame.display.set_caption("Asteroids!")
     updatable = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
+    asteroids = pygame.sprite.Group()
+
     Player.containers = (updatable, drawable)
+    Asteroid.containers = (asteroids, updatable, drawable)
+
     clock = pygame.time.Clock()
     dt = 0
     player_start_x = SCREEN_WIDTH / 2
