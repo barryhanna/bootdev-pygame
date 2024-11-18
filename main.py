@@ -46,7 +46,10 @@ def main():
             for shot in shots:
                 if shot.collides(asteroid):
                     shot.kill()
-                    asteroid.kill()
+                    if asteroid.radius > ASTEROID_MIN_RADIUS:
+                        asteroid.split()
+                    else:
+                        asteroid.kill()
 
         for drawable_item in drawable:
             drawable_item.draw(screen)
